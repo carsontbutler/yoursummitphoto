@@ -127,7 +127,7 @@ const Gallery = () => {
               ></img>
             </Link>
           </div>
-          <h1 className="w-4/6 text-center text-2xl self-end font-bold md:tracking-widest drop-shadow-xl font-sofia underline decoration-orange2">
+          <h1 className="w-4/6 text-center text-3xl self-end font-bold md:tracking-widest drop-shadow-xl font-sofia underline underline-offset-4 decoration-orange2 decoration-2">
             Find your summit photo
           </h1>
           {authCtx.isLoggedIn ? (

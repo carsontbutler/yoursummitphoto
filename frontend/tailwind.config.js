@@ -9,6 +9,15 @@ module.exports = {
       xl: "1440px",
     },
     extend: {
+      keyframes: {
+        zoom: {
+          '0%': { transform: 'scaleX(1)' },
+          '100%': { transform: 'scaleX(1.2)' },
+        },
+      },
+      animation: {
+        'zoom-in': 'zoom 10s ease-in-out',
+      },
     },
     colors: {
       blue0: "#03045e",
