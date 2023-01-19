@@ -20,7 +20,7 @@ const Homepage = () => {
         </div>
         <Link
           to="/gallery"
-          className="button bg-orange5 shadow-lg bg-opacity-90 hover:bg-orange1 text-white font-bold py-2 px-4 rounded my-10 transition ease-in-out delay-75"
+          className="button bg-orange2 hover:bg-orange5 shadow-lg bg-opacity-90  text-white text-xl font-bold py-2 px-4 rounded my-10 transition ease-in-out delay-75 w-10"
         >
           View Gallery
         </Link>
@@ -35,11 +35,11 @@ const Homepage = () => {
           </div>
         ) : (
           <h3 className="text-l text-blue8 drop-shadow-md mt-10">
-            <Link to="/login" className="underline hover:no-underline">
+            <Link to="/login" className="underline hover:no-underline hover:text-orange2">
               Log in
             </Link>{" "}
             or{" "}
-            <Link to="/register" className="underline hover:no-underline">
+            <Link to="/register" className="underline hover:no-underline hover:text-orange2">
               Register
             </Link>{" "}
             to upload photos

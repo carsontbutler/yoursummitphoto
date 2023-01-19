@@ -14,9 +14,11 @@ const Gallery = () => {
 
   //Filter Form
   const [errorMessage, setErrorMessage] = useState("");
+  let today = new Date().toISOString().slice(0, 10);
+
   const [filterSelections, setFilterSelections] = useState({
-    fromDate: "",
-    toDate: "",
+    fromDate: "2020-01-01",
+    toDate: today,
     location: 0,
   });
   const [filteredImageData, setFilteredImageData] = useState({});
@@ -75,6 +77,7 @@ const Gallery = () => {
     }
     //else handle the date fields not being filled out
     else {
+      console.log(filterSelections);
       setErrorMessage("Please fill out all fields");
     }
   };
@@ -107,17 +110,14 @@ const Gallery = () => {
     setSelectedPhoto(imageData.find((image) => image.id == e.target.id));
     setShowModal(true);
   };
+
   const closeModalHandler = () => {
     setShowModal(false);
   };
 
-  function order(a, b) {
-    return a.author_name < b.author_name ? -1 : a > b ? 1 : 0;
-  }
-
   return (
     <div className="bg-transparent flex flex-col h-100 w-full">
-      <div className="h-70 bg-navBar bg-center bg-cover w-full border-b-2 border-orange2 border-opacity-70 text-white grid grid-cols-2 gap-y-2 justify-center py-4 px-2 mb-2">
+      <div className="h-70 bg-navBar bg-center bg-cover w-full border-b-2 border-orange2 border-opacity-70 text-white grid grid-cols-2 gap-y-4 justify-center py-4 px-2 mb-2">
         <div className="flex w-screen">
           <div className="w-1/6 self-start">
             <Link to="/">
@@ -127,7 +127,7 @@ const Gallery = () => {
               ></img>
             </Link>
           </div>
-          <h1 className="w-4/6 text-center text-2xl self-center font-bold md:tracking-widest drop-shadow-xl">
+          <h1 className="w-4/6 text-center text-2xl self-end font-bold md:tracking-widest drop-shadow-xl font-sofia underline decoration-orange2">
             Find your summit photo
           </h1>
           {authCtx.isLoggedIn ? (
@@ -193,7 +193,7 @@ const Gallery = () => {
         <div className="col-span-2 justify-center text-center">
           <button
             onClick={filterPhotosHandler}
-            class="bg-orange2 hover:bg-blue2 text-white font-bold py-2 px-4 rounded drop-shadow-lg"
+            class="bg-orange2 hover:bg-blue2 text-white font-bold py-2 px-4 rounded drop-shadow-lg transition delay-100 ease-in"
           >
             Search
           </button>
@@ -202,19 +202,30 @@ const Gallery = () => {
       </div>
       <div className="flex flex-wrap justify-center">
         {isLoading ? (
-          <h6>Loading</h6>
+          <div aria-label="Loading..." role="status" className="mt-8">
+            <svg className="h-12 w-12 animate-spin" viewBox="3 3 18 18">
+              <path
+                className="fill-blue5"
+                d="M3 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19C15.866 19 19 15.866 19 12C19 8.13401 15.866 5 12 5ZM3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12Z"
+              ></path>
+              <path
+                className="fill-blue0"
+                d="M16.9497 7.05015C14.2161 4.31648 9.78392 4.31648 7.05025 7.05015C6.65973 7.44067 6.02656 7.44067 5.63604 7.05015C5.24551 6.65962 5.24551 6.02646 5.63604 5.63593C9.15076 2.12121 14.8492 2.12121 18.364 5.63593C18.7545 6.02646 18.7545 6.65962 18.364 7.05015C17.9734 7.44067 17.3403 7.44067 16.9497 7.05015Z"
+              ></path>
+            </svg>
+          </div>
         ) : (
           filteredImageData.map((image) => (
             <div
-              onClick={showModalHandler}
-              className="photo-card flex flex-col items-center w-72 p-2 m-2 border-2 rounded-lg hover:cursor-pointer hover:border-orange5 hover:border-opacity-100 transition ease-in z-50"
+              className="photo-card flex flex-col items-center w-72 p-2 m-2 border-2 rounded-lg bg-blue2 bg-opacity-30 hover:border-2 hover:border-blue5 hover:border-opacity-75 transition ease-in"
               id={image.id}
               key={image.id}
             >
               <img
-                className="w-full aspect-square rounded z-50"
+                className="w-full aspect-square rounded z-50 hover:cursor-pointer z-50"
                 src={`http://localhost:8000${image.photo}`}
                 id={image.id}
+                onClick={showModalHandler}
               />
               <div>
                 <h3 className="text-sm text-blue4">
@@ -239,6 +250,11 @@ const Gallery = () => {
               </div>
             </div>
           ))
+        )}
+        {filteredImageData.length === 0 && (
+          <div className="text-white text-center text-2xl mt-8">
+            No photos found.
+          </div>
         )}
       </div>
       <GalleryModal

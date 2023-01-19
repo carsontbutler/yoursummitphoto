@@ -8,7 +8,8 @@ module.exports = {
       lg: "976px",
       xl: "1440px",
     },
-    extend: {},
+    extend: {
+    },
     colors: {
       blue0: "#03045e",
       blue1: "#023e8a",
@@ -33,16 +34,14 @@ module.exports = {
         "linear-gradient(to bottom, rgba(0, 0, 0, .3), rgba(0, 0, 0, .3)), url('./mtn-blue.jpg')",
       mountainDark:
         "linear-gradient(to bottom, rgba(10, 10, 10, .8), rgba(0, 0, 0, .8)), url('./mtn-blue.jpg')",
-      // navBar:
-      //   "linear-gradient(to bottom, rgba(2, 6, 138, .5), rgba(0, 0, 0, 1)), url('./mtn-nav.jpg')",
       navBar:
         "linear-gradient(to bottom, rgba(0, 119, 182, .5), rgba(0, 0, 0, 1)), url('./mtn-nav.jpg')",
       galleryBg:
         "linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 10, 1))",
     },
     fontFamily: {
-      'sofia': ['Sofia Sans', 'sans-serif']
+      sofia: ["Sofia Sans", "sans-serif"],
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animation-delay")],
 };
