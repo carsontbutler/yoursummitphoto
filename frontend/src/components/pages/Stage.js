@@ -27,12 +27,12 @@ const Stage = (props) => {
               className="w-full aspect-square rounded z-50 hover:cursor-pointer z-50"
               src={`http://localhost:8000${image.photo}`}
               id={image.id}
-              onClick={showModalHandler}
+              onClick={props.showModalHandler}
             />
             <div>
               <h3 className="text-sm text-blue4">
                 <span className="text-blue7">Location: </span>
-                {locations.find((loc) => loc.id == image.location).name}
+                {props.locations.find((loc) => loc.id == image.location).name}
               </h3>
               <p className="text-blue4 text-sm">
                 <span className="text-blue7">Date: </span>

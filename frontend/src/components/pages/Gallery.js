@@ -4,7 +4,7 @@ import { url, base, axiosInstance } from "../store/api";
 import GalleryModal from "./GalleryModal";
 import axios from "axios";
 import AuthContext from "../store/auth-context";
-import Stage from "./Stage"
+import Stage from "./Stage";
 
 const Gallery = () => {
   const authCtx = useContext(AuthContext);
@@ -201,7 +201,12 @@ const Gallery = () => {
           <small className="block text-red mt-2">{errorMessage}</small>
         </div>
       </div>
-      <Stage isLoading={isLoading} filteredImageData={filteredImageData}/>
+      <Stage
+        isLoading={isLoading}
+        filteredImageData={filteredImageData}
+        showModalHandler={showModalHandler}
+        locations={locations}
+      />
       <GalleryModal
         showModal={showModal}
         showModalHandler={showModalHandler}
