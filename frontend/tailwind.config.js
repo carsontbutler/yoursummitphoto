@@ -10,13 +10,29 @@ module.exports = {
     },
     extend: {
       keyframes: {
-        zoom: {
-          '0%': { transform: 'scaleX(1)' },
-          '100%': { transform: 'scaleX(1.2)' },
+        grow: {
+          "0%": { transform: "scale(1.5)" },
+          "100%": { transform: "scale(1)" },
+        },
+        growGalleryModal: {
+          "0%": { transform: "scale(0)", opacity: "0" },
+          "0%": { transform: "scale(1)", opacity: "0" },
+          "70%": { transform: "scale(1.2)", opacity: "0" },
+          "100%": { transform: "scale(1)", opacity: "1"},
+        },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1"},
         },
       },
       animation: {
-        'zoom-in': 'zoom 10s ease-in-out',
+        grow: "grow 0.5s ease-in-out",
+        growImage: "grow 10s ease-in-out",
+        fadeIn1: "fadeIn 1s ease-in-out",
+        fadeIn: "fadeIn 3s ease-in",
+        fadeIn5: "fadeIn 5s ease-in",
+        fadeIn7: "fadeIn 7s ease-in",
+        growGalleryModal: "growGalleryModal .4s ease-in"
       },
     },
     colors: {

@@ -193,7 +193,7 @@ const Gallery = () => {
         <div className="col-span-2 justify-center text-center">
           <button
             onClick={filterPhotosHandler}
-            class="bg-orange2 hover:bg-blue2 text-white font-bold py-2 px-4 rounded drop-shadow-lg transition delay-100 ease-in"
+            class="bg-orange2 hover:bg-blue2 border-orange2 border-2 text-white font-bold py-2 px-4 rounded drop-shadow-lg transition delay-50 ease-in"
           >
             Search
           </button>
@@ -217,7 +217,7 @@ const Gallery = () => {
         ) : (
           filteredImageData.map((image) => (
             <div
-              className="photo-card flex flex-col items-center w-72 p-2 m-2 border-2 rounded-lg bg-blue2 bg-opacity-30 hover:border-2 hover:border-blue5 hover:border-opacity-75 transition ease-in"
+              className="photo-card flex flex-col items-center w-72 p-2 m-2 border-2 rounded-lg bg-blue2 bg-opacity-30 hover:border-2 hover:border-blue5 hover:border-opacity-75 transition ease-in animate-fadeIn"
               id={image.id}
               key={image.id}
             >

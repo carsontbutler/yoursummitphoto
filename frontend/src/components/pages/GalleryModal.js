@@ -26,7 +26,7 @@ const GalleryModal = (props) => {
         ></path>
       </svg>
       <img
-        className="h-5/6 aspect-auto object-contain"
+        className="h-5/6 aspect-auto object-contain animate-growGalleryModal"
         src={`http://localhost:8000/${props.selectedPhoto.photo}`}
       ></img>
       <h3 className="text-blue4 text-md md:text-lg text-center font-bold">
