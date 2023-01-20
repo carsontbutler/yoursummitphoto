@@ -117,7 +117,7 @@ const Gallery = () => {
   };
 
   return (
-    <div className="bg-transparent flex flex-col h-100 w-full">
+    <div className="bg-mountain bg-center bg-cover flex flex-col h-full w-full">
       <div className="h-70 bg-navBar bg-center bg-cover w-full border-b-4 border-orange2 border-opacity-80 text-white grid grid-cols-2 gap-y-4 justify-center py-4 px-2 mb-2">
         <div className="flex w-screen">
           <div className="w-1/6 self-start">
