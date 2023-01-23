@@ -16,6 +16,7 @@ const Gallery = () => {
   //Filter Form
   const [errorMessage, setErrorMessage] = useState("");
   let today = new Date().toISOString().slice(0, 10);
+  const [sortBy, setSortBy] = useState("");
 
   const [filterSelections, setFilterSelections] = useState({
     fromDate: "2020-01-01",
@@ -116,8 +117,37 @@ const Gallery = () => {
     setShowModal(false);
   };
 
+  const sortByHandler = () => {
+    switch (sortBy) {
+      case "dateNewest":
+        setFilteredImageData(
+          [...filteredImageData].sort((a, b) => (a.date < b.date ? 1 : -1))
+        );
+        break;
+      case "dateOldest":
+        setFilteredImageData(
+          [...filteredImageData].sort((a, b) => (a.date > b.date ? 1 : -1))
+        );
+        break;
+      case "author":
+        setFilteredImageData(
+          [...filteredImageData].sort((a, b) => (a.author > b.author ? 1 : -1))
+        );
+      default:
+        break;
+    }
+  };
+
+  const changeSortHandler = (e) => {
+    setSortBy(e.target.value);
+  };
+
+  useEffect(() => {
+    sortByHandler();
+  }, [sortBy]);
+
   return (
-    <div className="bg-mountain bg-center bg-cover flex flex-col h-full w-full">
+    <div className="bg-black flex flex-col w-full">
       <div className="h-70 bg-navBar bg-center bg-cover w-full border-b-4 border-orange2 border-opacity-80 text-white grid grid-cols-2 gap-y-4 justify-center py-4 px-2 mb-2">
         <div className="flex w-screen">
           <div className="w-1/6 self-start">
@@ -198,9 +228,17 @@ const Gallery = () => {
           >
             Search
           </button>
+
           <small className="block text-red mt-2">{errorMessage}</small>
         </div>
       </div>
+      <div className="flex col-span-2 justify-end w-full">
+        <select onChange={changeSortHandler} value={sortBy}>
+            <option value="dateOldest">Date (oldest)</option>
+            <option value="dateNewest">Date (newest)</option>
+            <option value="author">Author</option>
+          </select>
+        </div>
       <Stage
         isLoading={isLoading}
         filteredImageData={filteredImageData}

@@ -1,6 +1,7 @@
 import react from "react";
 
 const Stage = (props) => {
+
   return (
     <div className="flex flex-wrap justify-center">
       {props.isLoading ? (
