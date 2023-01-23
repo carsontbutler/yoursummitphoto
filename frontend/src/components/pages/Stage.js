@@ -1,7 +1,6 @@
 import react from "react";
 
 const Stage = (props) => {
-
   return (
     <div className="flex flex-wrap justify-center">
       {props.isLoading ? (
@@ -18,9 +17,9 @@ const Stage = (props) => {
           </svg>
         </div>
       ) : (
-        props.filteredImageData.map((image) => (
+        props.customSort(props.filteredImageData).map((image) => (
           <div
-            className="photo-card flex flex-col items-center w-72 p-2 m-2 border-2 rounded-lg bg-blue2 bg-opacity-30 hover:border-2 hover:border-blue5 hover:border-opacity-75 transition ease-in animate-fadeIn"
+            className="photo-card flex flex-col items-center w-72 p-2 m-2 border-2 rounded-lg bg-blue2 bg-opacity-30 hover:border-2 hover:border-blue5 hover:border-opacity-75 transition ease-in animate-fadeIn1"
             id={image.id}
             key={image.id}
           >
@@ -37,7 +36,9 @@ const Stage = (props) => {
               </h3>
               <p className="text-blue4 text-sm">
                 <span className="text-blue7">Date: </span>
-                {image.date}
+                {`${image.date.split("-")[1]}/${image.date.split("-")[2]}/${
+                  image.date.split("-")[0]
+                }`}
               </p>
               {image.time && (
                 <p className="text-blue4 text-sm">

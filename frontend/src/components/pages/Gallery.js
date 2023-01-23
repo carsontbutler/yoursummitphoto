@@ -16,7 +16,7 @@ const Gallery = () => {
   //Filter Form
   const [errorMessage, setErrorMessage] = useState("");
   let today = new Date().toISOString().slice(0, 10);
-  const [sortBy, setSortBy] = useState("");
+  const [sortBySelection, setSortBySelection] = useState("newest");
 
   const [filterSelections, setFilterSelections] = useState({
     fromDate: "2020-01-01",
@@ -46,11 +46,11 @@ const Gallery = () => {
     });
   };
 
-  const filterPhotosHandler = () => {
+  const filterPhotosHandler = (e) => {
     setErrorMessage(""); //Reset error message
     setFilteredImageData(imageData); //Reset filtered data
 
-    //if specific location is selected
+    //if a specific location is selected
     if (
       filterSelections.location > 0 &&
       filterSelections.fromDate.length > 0 &&
@@ -64,7 +64,7 @@ const Gallery = () => {
       );
       setFilteredImageData(newFilterData);
     }
-    //if location == 0 ("Any" is selected)
+    //if location == 0 (if "Any" is selected)
     else if (
       filterSelections.location === 0 &&
       filterSelections.fromDate.length > 0 &&
@@ -79,7 +79,6 @@ const Gallery = () => {
     }
     //else handle the date fields not being filled out
     else {
-      console.log(filterSelections);
       setErrorMessage("Please fill out all fields");
     }
   };
@@ -92,9 +91,9 @@ const Gallery = () => {
     ]).then(
       axios.spread((images, locations) => {
         setLocations(locations.data);
-        console.log(images.data);
         setImageData(images.data);
-        setFilteredImageData(images.data);
+        let filterData = images.data.sort((a, b) => (a.date < b.date ? 1 : -1));
+        setFilteredImageData(filterData);
         setIsLoading(false);
       })
     );
@@ -117,34 +116,26 @@ const Gallery = () => {
     setShowModal(false);
   };
 
-  const sortByHandler = () => {
-    switch (sortBy) {
-      case "dateNewest":
-        setFilteredImageData(
-          [...filteredImageData].sort((a, b) => (a.date < b.date ? 1 : -1))
-        );
-        break;
-      case "dateOldest":
-        setFilteredImageData(
-          [...filteredImageData].sort((a, b) => (a.date > b.date ? 1 : -1))
-        );
-        break;
-      case "author":
-        setFilteredImageData(
-          [...filteredImageData].sort((a, b) => (a.author > b.author ? 1 : -1))
-        );
-      default:
-        break;
+  const customSort = (arr) => {
+    if (!arr.length > 0) {
+      return arr;
+    } else {
+      switch (sortBySelection) {
+        case "newest":
+          return arr.sort((a, b) => (a.date < b.date ? 1 : -1));
+        case "oldest":
+          return arr.sort((a, b) => (a.date > b.date ? 1 : -1));
+        case "author":
+          return arr.sort((a, b) => (a.author > b.author ? 1 : -1));
+        default:
+          return arr;
+      }
     }
   };
 
-  const changeSortHandler = (e) => {
-    setSortBy(e.target.value);
+  const changeSortType = (e) => {
+    setSortBySelection(e.target.value);
   };
-
-  useEffect(() => {
-    sortByHandler();
-  }, [sortBy]);
 
   return (
     <div className="bg-black flex flex-col w-full">
@@ -233,17 +224,19 @@ const Gallery = () => {
         </div>
       </div>
       <div className="flex col-span-2 justify-end w-full">
-        <select onChange={changeSortHandler} value={sortBy}>
-            <option value="dateOldest">Date (oldest)</option>
-            <option value="dateNewest">Date (newest)</option>
-            <option value="author">Author</option>
-          </select>
-        </div>
+      <p className="text-white mr-2">Sort by</p>
+        <select onChange={changeSortType} value={sortBySelection} className="mr-2 md:mr-8 lg:mr-12 rounded hover:shadow-[inset_0_-2px_8px_rgba(210,130,0,1)]">
+          <option value="newest">Date (newest)</option>
+          <option value="oldest">Date (oldest)</option>
+          <option value="author">Author</option>
+        </select>
+      </div>
       <Stage
         isLoading={isLoading}
         filteredImageData={filteredImageData}
         showModalHandler={showModalHandler}
         locations={locations}
+        customSort={customSort}
       />
       <GalleryModal
         showModal={showModal}
