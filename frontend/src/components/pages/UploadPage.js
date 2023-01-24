@@ -11,7 +11,7 @@ const UploadPage = () => {
 
   //Fetch all location names and ids to populate the Location dropdown
   const fetchLocations = async () => {
-    await axiosInstance.get(`${url}/locations`).then((res) => {
+    await axiosInstance.get(`${url}/api/locations`).then((res) => {
       if (res.status == 200) {
         setLocations(res.data);
       } else {
@@ -84,7 +84,7 @@ const UploadPage = () => {
       formData.append("time", data.time); //only add the time if the checkbox is checked
     }
     axiosInstance
-      .post(`${url}/upload/`, formData, {
+      .post(`${url}/api/upload/`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: "Bearer " + authCtx.access,

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { url, base, axiosInstance } from "../store/api";
+import { url } from "../store/api";
 import GalleryModal from "./GalleryModal";
 import axios from "axios";
 import AuthContext from "../store/auth-context";
@@ -86,8 +86,8 @@ const Gallery = () => {
   //Fetch image and location data
   const fetchData = () => {
     Promise.all([
-      axios.get(`${url}/images`),
-      axios.get(`${url}/locations`),
+      axios.get(`${url}/api/images`),
+      axios.get(`${url}/api/locations`),
     ]).then(
       axios.spread((images, locations) => {
         setLocations(locations.data);

@@ -1,5 +1,5 @@
 import react from "react";
-
+import { url } from "../store/api";
 const Stage = (props) => {
   return (
     <div className="flex flex-wrap justify-center">
@@ -25,7 +25,7 @@ const Stage = (props) => {
           >
             <img
               className="w-full aspect-square rounded z-50 hover:cursor-pointer z-50"
-              src={`http://localhost:8000${image.photo}`}
+              src={`${url}/${image.photo}`}
               id={image.id}
               onClick={props.showModalHandler}
             />

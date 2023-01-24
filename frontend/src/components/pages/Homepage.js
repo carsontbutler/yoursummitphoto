@@ -9,7 +9,7 @@ const Homepage = () => {
   return (
     <div className="flex h-screen">
         <img
-          src="http://localhost:3000/static/media/mtn-blue.04053161936aab857c82.jpg"
+          src={"./static/media/mtn-blue.04053161936aab857c82.jpg"}
           className="fixed top-0 right-0 animate-growImage opacity-70"
         ></img>
       <div className="m-auto w-screen h-2/4 text-center drop-shadow-lg bg-blue2 bg-opacity-30 py-16 animate-fadeIn">

@@ -1,4 +1,5 @@
 import React from "react";
+import { url } from "../store/api";
 
 const GalleryModal = (props) => {
   console.log(props);
@@ -27,7 +28,7 @@ const GalleryModal = (props) => {
       </svg>
       <img
         className="h-5/6 aspect-auto object-contain animate-growGalleryModal"
-        src={`http://localhost:8000/${props.selectedPhoto.photo}`}
+        src={`${url}/${props.selectedPhoto.photo}`}
       ></img>
       <h3 className="text-blue4 text-md md:text-lg text-center font-bold">
         <span className="text-blue7">Location: </span>
@@ -53,7 +54,7 @@ const GalleryModal = (props) => {
       </p>
       <p className="text-orange5 text-md md:text-lg text-center font-bold">
         <a
-          href={`http://localhost:8000${props.selectedPhoto.photo}`}
+          href={`${url}/${props.selectedPhoto.photo}`}
           download
           className="hover:text-orange2 hover:opacity-70"
         >

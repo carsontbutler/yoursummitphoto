@@ -12,7 +12,7 @@ const LoginPage = () => {
     e.preventDefault();
     setErrorMessage("");
     axiosInstance
-      .post(`${url}/token/`, {
+      .post(`${url}/api/token/`, {
         username: username,
         password: password,
       })
