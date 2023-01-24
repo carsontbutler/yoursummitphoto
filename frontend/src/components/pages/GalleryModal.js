@@ -31,7 +31,11 @@ const GalleryModal = (props) => {
       ></img>
       <h3 className="text-blue4 text-md md:text-lg text-center font-bold">
         <span className="text-blue7">Location: </span>
-        {/* {props.locations.find((loc) => loc.id == props.selectedPhoto.location).name} */}
+        {props.locations.find(
+          (loc) => loc.id == props.selectedPhoto.location
+        ) &&
+          props.locations.find((loc) => loc.id == props.selectedPhoto.location)
+            .name}
       </h3>
       <p className="text-blue4 text-md md:text-lg text-center font-bold">
         <span className="text-blue7">Date: </span>
@@ -49,7 +53,7 @@ const GalleryModal = (props) => {
       </p>
       <p className="text-orange5 text-md md:text-lg text-center font-bold">
         <a
-          href={`http://localhost:8000/${props.selectedPhoto.photo}`}
+          href={`http://localhost:8000${props.selectedPhoto.photo}`}
           download
           className="hover:text-orange2 hover:opacity-70"
         >
