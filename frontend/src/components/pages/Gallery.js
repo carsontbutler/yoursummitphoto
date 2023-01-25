@@ -106,6 +106,7 @@ const Gallery = () => {
   //Photo modal - state
   const [showModal, setShowModal] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState({});
+  
   //Photo modal - handlers
   const showModalHandler = (e) => {
     setSelectedPhoto(imageData.find((image) => image.id == e.target.id));
