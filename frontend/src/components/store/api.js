@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const url = "http://localhost:8000";
+export const url = "yoursummitphoto-api.carsonbutler.dev";
 
 export const axiosInstance = axios.create({
   baseURL: url,
