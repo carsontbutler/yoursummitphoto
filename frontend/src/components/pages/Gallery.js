@@ -8,7 +8,6 @@ import Stage from "./Stage";
 import FilterForm from "./FilterForm";
 
 const Gallery = () => {
-  const authCtx = useContext(AuthContext);
   //Data state
   const [locations, setLocations] = useState([""]);
   const [imageData, setImageData] = useState([""]);

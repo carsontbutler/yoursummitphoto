@@ -78,6 +78,7 @@ const FilterForm = (props) => {
 
   return (
     <div className="h-70 bg-navBar bg-center bg-cover w-full border-b-4 border-orange2 border-opacity-80 text-white grid grid-cols-2 gap-y-4 justify-center py-4 px-2 mb-2">
+      
       <div className="flex w-screen">
         <div className="w-1/6 self-start">
           <Link to="/">
@@ -87,18 +88,18 @@ const FilterForm = (props) => {
             ></img>
           </Link>
         </div>
-        <h1 className="w-4/6 text-center text-3xl self-end font-bold md:tracking-widest drop-shadow-xl font-sofia underline underline-offset-4 decoration-orange2 decoration-2">
+        <h1 className="w-4/6 mt-12 text-center text-xl sm:text-2xl md:text-3xl self-end font-bold md:tracking-widest drop-shadow-xl font-sofia underline underline-offset-4 decoration-orange2 decoration-2">
           Find your summit photo
         </h1>
         {authCtx.isLoggedIn ? (
           <Link
-            className="underline hover:no-underline w-1/6 text-white"
+            className="underline hover:no-underline w-1/6 text-white self-center"
             to="/upload"
           >
             Upload photo
           </Link>
         ) : (
-          <div className="w-1/6 text-white self-center">
+          <div className="w-1/6 text-white self-start">
             <Link
               className="underline hover:no-underline w-1/6 text-white self-center"
               to="/login"
@@ -137,7 +138,7 @@ const FilterForm = (props) => {
         <input
           type="date"
           value={filterSelections.fromDate}
-          className="text-black rounded hover:shadow-[inset_0_-2px_8px_rgba(210,130,0,1)]"
+          className="text-black rounded hover:shadow-[inset_0_-2px_8px_rgba(210,130,0,1)] h-6 my-auto"
           onChange={handleFromDateChange}
         ></input>
       </div>
@@ -146,7 +147,7 @@ const FilterForm = (props) => {
         <input
           type="date"
           value={filterSelections.toDate}
-          className="text-black rounded hover:shadow-[inset_0_-2px_8px_rgba(210,130,0,1)]"
+          className="text-black rounded hover:shadow-[inset_0_-2px_8px_rgba(210,130,0,1)] h-6 my-auto"
           onChange={handleToDateChange}
         ></input>
       </div>
