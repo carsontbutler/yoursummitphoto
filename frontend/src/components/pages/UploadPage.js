@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { axiosInstance, url } from "../store/api";
 import AuthContext from "../store/auth-context";
 
 const UploadPage = () => {
   const authCtx = useContext(AuthContext);
+  const navigate = useNavigate();
   const [locations, setLocations] = useState([""]);
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -92,7 +93,7 @@ const UploadPage = () => {
       })
       .then((res) => {
         if (res.status == 200) {
-          setSuccessMessage("Success! File uploaded successfully.");
+          setSuccessMessage("Success! Your photo has been uploaded.");
           setData({
             photo: "",
             location: "",
@@ -100,6 +101,7 @@ const UploadPage = () => {
             time: "",
           });
           setPhotoName("");
+          navigate("/gallery");
         }
       })
       .catch(() => {
