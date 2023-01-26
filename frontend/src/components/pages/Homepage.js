@@ -25,7 +25,7 @@ const Homepage = () => {
         <div className="w-44 text-center m-auto hover:scale-110 transition ease-in-out duration-500">
           <Link
             to="/gallery"
-            className="button bg-orange2 hover:bg-orange5 shadow-lg bg-opacity-90 text-white text-xl font-bold py-2 px-4 rounded my-10 delay-75 w-10 animate-fadeIn5"
+            className="button bg-orange5 hover:bg-orange5 active:bg-orange2 after:bg-orange2 shadow-lg bg-opacity-50 text-white text-xl font-bold py-2 px-4 rounded my-10 delay-75 w-10 animate-fadeIn5"
           >
             View Gallery
           </Link>
