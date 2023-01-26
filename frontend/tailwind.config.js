@@ -29,7 +29,7 @@ module.exports = {
         grow: "grow 0.5s ease-in-out",
         growImage: "grow 10s ease-in-out",
         fadeIn1: "fadeIn 1s ease-in-out",
-        fadeIn: "fadeIn 3s ease-in",
+        fadeIn: "fadeIn 2.5s ease-in",
         fadeIn5: "fadeIn 5s ease-in",
         fadeIn7: "fadeIn 7s ease-in",
         growGalleryModal: "growGalleryModal .4s ease-in"
