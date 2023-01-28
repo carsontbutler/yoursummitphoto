@@ -7,11 +7,32 @@ import UploadPage from "./components/pages/UploadPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "./components/pages/AuthPage/LoginPage";
 import RegisterPage from "./components/pages/AuthPage/RegisterPage";
-import { axiosInstance, url } from "./components/store/api";
+import { axiosDataInstance, url } from "./components/store/api";
 import AuthContext from "./components/store/auth-context";
+import axios from "axios";
+import jwt_decode from "jwt-decode";
+import dayjs from "dayjs";
 
 function App() {
   const authCtx = useContext(AuthContext);
+
+  axiosDataInstance.interceptors.request.use(
+    async (req) => {
+      const user = jwt_decode(localStorage.getItem("access"));
+      const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1;
+      if (!isExpired) return req;
+      
+      const response = await axios.post(`${url}/api/token/refresh`, {
+        refresh: localStorage.getItem("refresh"),
+      });
+      authCtx.refreshTokens(response.data.access, response.data.refresh);
+      req.headers.Authorization = `Bearer  ${response.data.access}`;
+      return req;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
 
   const router = createBrowserRouter([
     {

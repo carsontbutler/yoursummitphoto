@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { axiosInstance, url } from "../store/api";
+import { axiosDataInstance, url } from "../store/api";
 import AuthContext from "../store/auth-context";
 
 const UploadPage = () => {
@@ -12,7 +12,7 @@ const UploadPage = () => {
 
   //Fetch all location names and ids to populate the Location dropdown
   const fetchLocations = async () => {
-    await axiosInstance.get(`${url}/api/locations`).then((res) => {
+    await axiosDataInstance.get(`${url}/api/locations`).then((res) => {
       if (res.status == 200) {
         setLocations(res.data);
       } else {
@@ -84,7 +84,7 @@ const UploadPage = () => {
     if (checked) {
       formData.append("time", data.time); //only add the time if the checkbox is checked
     }
-    axiosInstance
+    axiosDataInstance
       .post(`${url}/api/upload/`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
