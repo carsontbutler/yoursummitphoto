@@ -9,6 +9,8 @@ const Sidebar = () => {
     setShowSidebar(!showSidebar);
   };
 
+  let displayName = localStorage.getItem("username");
+
   return authCtx.isLoggedIn ? (
     <div>
       <div
@@ -43,9 +45,9 @@ const Sidebar = () => {
         <div className="flex flex-col gap-4 justify-center">
           <div className="w-full text-white h-4 flex justify-center hover:bg-opacity-50">
             <h6 className="text-sm text-center underline my-auto">
-              {authCtx.username.length <= 18
-                ? authCtx.username
-                : `${authCtx.username.slice(0, 18)}...`}
+              {displayName.length <= 18
+                ? displayName
+                : `${displayName.slice(0, 18)}...`}
             </h6>
           </div>
           <Link
@@ -53,7 +55,10 @@ const Sidebar = () => {
             className="w-full text-orange5 h-8 font-bold flex justify-end hover:cursor-pointer hover:bg-blue5 hover:bg-opacity-50 px-2"
           >
             <h6 className="text-sm text-right my-auto">Upload photo</h6>
-            <img src={require("../../upload-icon.png")} className="h-6 my-auto" />
+            <img
+              src={require("../../upload-icon.png")}
+              className="h-6 my-auto"
+            />
           </Link>
 
           <div

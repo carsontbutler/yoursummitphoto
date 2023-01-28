@@ -5,6 +5,7 @@ import AuthContext from "../store/auth-context";
 const Homepage = () => {
   const authCtx = useContext(AuthContext);
   const username = localStorage.getItem("username");
+  console.log(authCtx.username);
 
   return (
     <div className="flex h-screen">

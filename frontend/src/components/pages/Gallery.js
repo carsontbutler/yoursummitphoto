@@ -7,6 +7,7 @@ import FilterForm from "./FilterForm";
 import Sidebar from "./Sidebar";
 
 const Gallery = () => {
+
   //Data state
   const [locations, setLocations] = useState([""]);
   const [imageData, setImageData] = useState([""]);
@@ -72,7 +73,7 @@ const Gallery = () => {
 
   return (
     <div className="bg-black flex flex-col w-full">
-    <Sidebar />
+      <Sidebar />
       <FilterForm
         locations={locations}
         isLoading={isLoading}
@@ -105,7 +106,6 @@ const Gallery = () => {
         selectedPhoto={selectedPhoto}
         locations={locations}
       />
-      
     </div>
   );
 };
