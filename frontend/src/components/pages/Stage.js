@@ -24,7 +24,7 @@ const Stage = (props) => {
             key={image.id}
           >
             <img
-              className="w-full aspect-square rounded z-50 hover:cursor-pointer z-50"
+              className="w-full aspect-square rounded z-50 hover:cursor-pointer z-20"
               src={`${url}${image.photo}`}
               id={image.id}
               onClick={props.showModalHandler}

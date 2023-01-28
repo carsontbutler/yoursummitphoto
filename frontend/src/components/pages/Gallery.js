@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
 import { url } from "../store/api";
 import GalleryModal from "./GalleryModal";
 import axios from "axios";
-import AuthContext from "../store/auth-context";
 import Stage from "./Stage";
 import FilterForm from "./FilterForm";
+import Sidebar from "./Sidebar";
 
 const Gallery = () => {
   //Data state
@@ -73,6 +72,7 @@ const Gallery = () => {
 
   return (
     <div className="bg-black flex flex-col w-full">
+    <Sidebar />
       <FilterForm
         locations={locations}
         isLoading={isLoading}
@@ -105,6 +105,7 @@ const Gallery = () => {
         selectedPhoto={selectedPhoto}
         locations={locations}
       />
+      
     </div>
   );
 };

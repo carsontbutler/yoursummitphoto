@@ -91,14 +91,7 @@ const FilterForm = (props) => {
         <h1 className="w-4/6 mt-12 text-center text-xl sm:text-2xl md:text-3xl self-end font-bold md:tracking-widest drop-shadow-xl font-sofia underline underline-offset-4 decoration-orange2 decoration-2">
           Find your summit photo
         </h1>
-        {authCtx.isLoggedIn ? (
-          <Link
-            className="underline hover:no-underline w-1/6 text-white self-center"
-            to="/upload"
-          >
-            Upload photo
-          </Link>
-        ) : (
+        {!authCtx.isLoggedIn && (
           <div className="w-1/6 text-white self-start">
             <Link
               className="underline hover:no-underline w-1/6 text-white self-center"
