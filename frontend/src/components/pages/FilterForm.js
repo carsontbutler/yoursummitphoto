@@ -78,7 +78,7 @@ const FilterForm = (props) => {
 
   return (
     <div className="h-70 bg-navBar bg-center bg-cover w-full border-b-4 border-orange2 border-opacity-80 text-white grid grid-cols-2 gap-y-4 justify-center py-4 px-2 mb-2">
-      
+
       <div className="flex w-screen">
         <div className="w-1/6 self-start">
           <Link to="/">

@@ -32,6 +32,7 @@ export const AuthContextProvider = (props) => {
   const loginHandler = (userId, username, access, refresh) => {
     setUserId(userId);
     setUsername(username);
+    console.log(username);
     setAccess(access);
     setRefresh(refresh);
     setLoginTimestamp(new Date().getTime());

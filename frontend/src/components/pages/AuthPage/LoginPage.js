@@ -18,6 +18,7 @@ const LoginPage = () => {
       })
       .then((res) => {
         if (res.status === 200) {
+          console.log(res.data);
           authCtx.login(
             res.data.id,
             res.data.username,
