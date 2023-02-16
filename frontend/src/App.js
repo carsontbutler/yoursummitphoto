@@ -1,10 +1,10 @@
-import logo from "./logo.svg";
-import react, { useState, useContext } from "react";
+import react, { useContext } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Homepage from "./components/pages/Homepage";
 import Gallery from "./components/pages/Gallery";
 import UploadPage from "./components/pages/UploadPage";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import MyPhotos from "./components/pages/MyPhotos";
 import LoginPage from "./components/pages/AuthPage/LoginPage";
 import RegisterPage from "./components/pages/AuthPage/RegisterPage";
 import { axiosDataInstance, url } from "./components/store/api";
@@ -58,6 +58,10 @@ function App() {
     {
       path: "/upload",
       element: authCtx.isLoggedIn ? <UploadPage /> : <LoginPage />,
+    },
+    {
+      path: "/myphotos",
+      element: authCtx.isLoggedIn ? <MyPhotos /> : <LoginPage />,
     },
   ]);
 

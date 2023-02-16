@@ -57,7 +57,7 @@ const Sidebar = () => {
             <h6 className="text-sm text-right my-auto">Upload photo</h6>
             <img
               src={require("../../upload-icon.png")}
-              className="h-6 my-auto"
+              className="h-6 my-auto ml-2"
             />
           </Link>
 
@@ -66,7 +66,7 @@ const Sidebar = () => {
             className="w-full text-orange5 h-8 font-bold flex justify-end hover:cursor-pointer hover:bg-blue5 hover:bg-opacity-50 px-2 z-50"
           >
             <h6 className="text-sm text-right my-auto">Logout</h6>
-            <img src={require("../../sign-out.png")} className="h-6 my-auto" />
+            <img src={require("../../sign-out.png")} className="h-6 my-auto ml-2" />
           </div>
         </div>
       </div>

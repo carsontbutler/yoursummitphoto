@@ -67,3 +67,15 @@ class UploadPhotoView(APIView):
             return Response({'message': serializer.data}, status=status.HTTP_200_OK)
         print(serializer.errors)
         return Response({'message': 'Something went wrong. Please check the form and try again.'}, status=status.HTTP_400_BAD_REQUEST)
+
+class DeletePhotoView(APIView):
+    permission_classes=[IsAuthenticated]
+
+    def delete(self, request, pk):
+        user = request.user
+        photos = Photo.objects.filter(members__in=[user])
+        target_photo = Photo.objects.get(id=pk)
+        if target_photo in photos and target_photo.author == user:
+            target_photo.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_400_BAD_REQUEST)

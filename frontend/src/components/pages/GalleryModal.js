@@ -58,7 +58,7 @@ const GalleryModal = (props) => {
           download
           className="hover:text-orange2 hover:opacity-70"
         >
-          Download
+          View full size
         </a>
       </p>
     </div>

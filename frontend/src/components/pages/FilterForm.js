@@ -11,7 +11,6 @@ const FilterForm = (props) => {
   const [errorMessage, setErrorMessage] = useState("");
   let today = new Date().toISOString().slice(0, 10);
 
-
   const [filterSelections, setFilterSelections] = useState({
     fromDate: "2020-01-01",
     toDate: today,
