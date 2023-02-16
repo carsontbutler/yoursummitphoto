@@ -2,7 +2,7 @@ import react from "react";
 import { url } from "../store/api";
 const Stage = (props) => {
   return (
-    <div className="flex flex-wrap justify-center">
+    <div id="stage" className="flex flex-wrap justify-center">
       {props.isLoading ? (
         <div aria-label="Loading..." role="status" className="mt-8">
           <svg className="h-12 w-12 animate-spin" viewBox="3 3 18 18">

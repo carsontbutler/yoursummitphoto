@@ -72,7 +72,7 @@ const Gallery = () => {
   };
 
   return (
-    <div className="bg-black flex flex-col w-full">
+    <div id="gallery" className="bg-black flex flex-col w-full">
       <Sidebar />
       <FilterForm
         locations={locations}

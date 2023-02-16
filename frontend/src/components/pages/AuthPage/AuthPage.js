@@ -3,10 +3,10 @@ import RegisterForm from "./RegisterForm";
 import LoginForm from "./LoginForm";
 
 const AuthPage = () => {
-  const [isLoggingIn, setIsLogginIn] = useState(true);
+  const [isLoggingIn, setIsLoggingIn] = useState(true);
 
   return (
-    <div className="bg-mountain bg-cover bg-center flex h-screen max-w-full h-full px-4">
+    <div id="authpage-container" className="bg-mountain bg-cover bg-center flex h-screen max-w-full h-full px-4">
       <div className="h-5/6 md:h-4/6 w-full md:w-4/6 lg:w-3/6 bg-black bg-opacity-70 m-auto py-6 flex">
         <div className="m:w-3/6 lg:w-full m-auto">
           {isLoggingIn ? (

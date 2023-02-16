@@ -8,7 +8,7 @@ const Homepage = () => {
   console.log(authCtx.username);
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen homepage-container">
         <img
           src={"./static/media/mtn-blue.04053161936aab857c82.jpg"}
           className="fixed top-0 right-0 animate-growImage opacity-70 object-cover h-screen w-screen"
